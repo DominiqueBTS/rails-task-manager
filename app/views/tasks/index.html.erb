@@ -1,0 +1,14 @@
+<h1>here is your list of tasks!</h1>
+<ul>
+  <% @tasks.each do |task| %>
+    <li>
+      <label>
+        <%= check_box_tag "task[#{task.id}][completed]", 1, task.completed %>
+        <%= task.task %>
+        <%= task.details %>
+      </label>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Create a new task", new_task_path %>

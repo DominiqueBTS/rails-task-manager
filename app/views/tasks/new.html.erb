@@ -1,0 +1,23 @@
+<h1>add a new task</h1>
+
+<%= form_with model: @task do |f| %>
+  <%= f.label :task %>
+  <%= f.text_field :task %>
+  <%= f.label :details %>
+  <%= f.text_field :details %>
+  <%= f.label :completed %>
+  <%= f.check_box :completed, { checked: false } %>
+  <%= f.submit %>
+  <%= link_to "Show all tasks", tasks_path %>
+<% end %>
+
+<% if @task.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+    <ul>
+      <% @task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
